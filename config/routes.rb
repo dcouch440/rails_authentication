@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'homes#index'
 
+  resources :users, only: [:create, :show]
+
   get '/signup' => 'users#new'
-  post '/users' => 'users#create'
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'

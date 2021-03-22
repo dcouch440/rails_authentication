@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authorize, only: [:show]
+
   def new
     @user = User.new
   end
@@ -12,6 +14,14 @@ class UsersController < ApplicationController
     else
       flash[:alert] = "There was a problem signing up."
       redirect_to '/signup'
+    end
+  end
+
+  def show
+    if session[:user_id] == current_user.id
+      render :user_profile
+    else
+      redirect '/'
     end
   end
 
