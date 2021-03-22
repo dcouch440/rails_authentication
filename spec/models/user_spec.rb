@@ -9,9 +9,11 @@ describe User do
   it { should validate_presence_of :password }
 
   it "should validate a password to specifications" do
+
     interval = 0
 
     [
+
       'Ban4nn@',
       'Bannann@',
       'BANNANN4444@',
@@ -31,6 +33,8 @@ describe User do
       interval += 1
 
     end
-    expect(User.all.count).to eq 1
+
+    expect(User.all.first.username).to eq "TEST_USER_5"
+
   end
 end
